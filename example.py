@@ -13,8 +13,53 @@ class Spam:
 	def b(self):
 		pass
 
+
 @debugattr
 class Point:
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
+
+#if we wanted to use a same decorator for many classes with inheritanceslike
+
+#@debugmethods
+#class Spam:
+
+#@debugmethods
+#class cap(Spam):
+
+#@debugmethods
+#class tap(cap):
+
+#then we use metaclass
+
+class debugmeta(type):
+	def __new_(cls, clsname, bases, clsdict):
+		clsobj = super().__new_(cls, clsname,
+								bases, clsdict)
+		clsobj = debugmethods(clsobj)
+		return clsobj
+
+#class Base(metaclass = debugmeta):
+#class cap(Base)
+
+#Making customized types through inheritence from type class
+
+class mytype(type):
+	def __new__(cls, clsname, bases, clsdict):
+		if len(bases) > 1: 
+			raise TypeError("NO!")
+		return super().__new__(cls, clsname, clsdict)
+
+#to use the custom type we require we need to inherit
+#class Base(metaclss = mytype):
+#	pass
+#class A(Base):
+#	pass
+#class B(Base):
+#	pass
+#class C(A,B): 
+#	pass
+# Error is raised due to two bases
+
+
