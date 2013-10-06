@@ -1,0 +1,4 @@
+def debug(func):
+    #func as input
+    def wrapper(*args, **kwargs):
+        print(func.__nam_e_)

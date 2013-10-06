@@ -1,5 +1,6 @@
 from debugly import debug
 
-@debug
+@debug(prefix = '***')
 def add(x,y):
     return x + y
+
