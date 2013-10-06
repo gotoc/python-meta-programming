@@ -21,5 +21,10 @@ def debugarg(prefix = ''):
             return func(*args, **kwargs)
         return wrapper
 
-	
+
+def debugmethods(cls):
+    for key, val in vars(cls).items():
+        if callable(val):
+            setattr(cls,key, debug(val))
+    return cls
 
