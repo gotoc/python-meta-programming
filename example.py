@@ -4,6 +4,7 @@ from debugly import debug, debugmethods
 def add(x,y):
     return x + y
 
+#if you are using debugmethods we can't wrap if static methods and classmethods are use
 @debugmethods
 class Spam:
 	def a(self):
