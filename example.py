@@ -62,4 +62,24 @@ class mytype(type):
 #	pass
 # Error is raised due to two bases
 
+#Generalized __init__function through inheritence
+
+class Structure:
+	_fields = []
+	def __init__(self, *args):
+		for name, val in zip(self._fields, args):
+			setatte(self, name, val)
+
+
+
+class Stock(Structure):
+	_fields = ['name', 'shares', 'price']
+
+#Otherwise we have to use init to initialize every attribute
+
+
+
+
+
+
 
